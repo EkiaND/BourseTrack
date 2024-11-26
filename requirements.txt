@@ -1,0 +1,24 @@
+# Framework Web
+Flask==2.3.2              # Framework pour créer l'application web
+Jinja2==3.1.2             # Moteur de templates pour Flask
+Werkzeug==2.3.7           # Composant WSGI pour Flask
+
+# Requêtes et APIs
+requests==2.31.0          # Pour interagir avec les APIs
+python-dotenv==1.0.0      # Gestion des variables d'environnement
+
+# Manipulation et Analyse de Données
+pandas==2.1.2             # Manipulation des données tabulaires
+numpy==1.26.0             # Calculs numériques
+
+# Visualisation des Données
+matplotlib==3.8.0         # Génération de graphiques statiques
+seaborn==0.12.2           # Amélioration des graphiques
+
+# Base de Données
+sqlalchemy==2.0.21        # Gestion ORM compatible avec Python 3.12
+
+# Développement et Tests
+pytest==7.4.2             # Framework de tests
+black==23.9.1             # Formatage de code
+isort==5.12.0             # Tri des imports
