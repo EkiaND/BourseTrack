@@ -42,7 +42,7 @@
 1. Clonez le dépôt :
 
 ```bash
-   git clone https://github.com/<votre-utilisateur>/BourseTrack.git
+   git clone https://github.com/EkiaND/BourseTrack.git
    cd BourseTrack
 ```
 
