@@ -9,7 +9,7 @@ Ce guide explique comment effectuer des modifications dans le dépôt, les commi
 Si ce n'est pas encore fait, commencez par cloner le dépôt sur votre machine locale :
 
 ```bash
-git clone https://github.com/<votre-utilisateur>/BourseTrack.git
+git clone https://github.com/EkiaND/BourseTrack.git
 ```
 Déplacez-vous dans le répertoire cloné : 
 
