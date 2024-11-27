@@ -24,7 +24,7 @@
         </thead>
         <tbody>
             {% for indicateur in indicateurs %}
-            <tr>
+            <tr class="{% if indicateur.rendement_moyen_journalier > 0 %}positive{% else %}negative{% endif %}">
                 <td>{{ indicateur.nom }}</td>
                 <td>{{ indicateur.prix_moyen_ouverture | round(2) }}</td>
                 <td>{{ indicateur.prix_moyen_fermeture | round(2) }}</td>
@@ -34,7 +34,7 @@
                 <td>{{ indicateur.rendement_moyen_journalier | round(2) }}</td>
             </tr>
             {% endfor %}
-        </tbody>
+        </tbody>        
     </table>
 
     <!-- Affichage du graphique -->

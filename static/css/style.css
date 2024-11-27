@@ -31,3 +31,12 @@ th {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
+
+/* Ajouter des couleurs conditionnelles pour les lignes */
+tr.positive {
+    background-color: #d4edda; /* Vert clair */
+}
+
+tr.negative {
+    background-color: #f8d7da; /* Rouge clair */
+}
