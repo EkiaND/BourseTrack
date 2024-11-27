@@ -10,6 +10,14 @@ h1, h2 {
     color: #333;
 }
 
+/* Centrer l'image */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%; /* Optionnel : ajuster la taille maximale de l'image */
+    height: auto;   /* Maintenir les proportions */
+}
+
 table {
     width: 100%;
     margin: 20px auto;
