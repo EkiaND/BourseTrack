@@ -54,7 +54,7 @@ def index():
         "index.html",
         titre="Performances Boursières",
         indicateurs=indicateurs,
-        graphique_path=os.path.relpath(graphique_path, STATIC_DIR)  # Relatif au dossier static
+        graphique=graphique_path
     )
 
 
