@@ -6,6 +6,7 @@
     <title>Performance Boursière</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <script src="../static/js/toggle-dark-mode.js" defer></script>
+    <script src="../static/js/sorting.js" defer></script>
 </head>
 <body>
     <h1>Performances Boursières des Grandes Entreprises</h1>
@@ -19,22 +20,22 @@
         <span class="toggle-label">🌙</span>
     </div>
 
-    <!-- Affichage du tableau -->
-    <table border="1">
+    <!-- Tableau des indicateurs financiers -->
+    <table border="1" id="tableau-indicateurs">
         <thead>
             <tr>
-                <th>Entreprise</th>
-                <th>Prix Moyen Ouverture</th>
-                <th>Prix Moyen Fermeture</th>
-                <th>Volatilité Moyenne</th>
-                <th>Volume Moyen</th>
-                <th>Tendance Globale</th>
-                <th>Rendement Moyen Journalier</th>
+                <th data-column="nom" class="sortable">Entreprise<span class="sort-indicator"></span></th>
+                <th data-column="prix_moyen_ouverture" class="sortable">Prix Moyen Ouverture<span class="sort-indicator"></span></th>
+                <th data-column="prix_moyen_fermeture" class="sortable">Prix Moyen Fermeture<span class="sort-indicator"></span></th>
+                <th data-column="volatilite_moyenne" class="sortable">Volatilité Moyenne<span class="sort-indicator"></span></th>
+                <th data-column="volume_moyen" class="sortable">Volume Moyen<span class="sort-indicator"></span></th>
+                <th data-column="tendance_globale" class="sortable">Tendance Globale<span class="sort-indicator"></span></th>
+                <th data-column="rendement_moyen_journalier" class="sortable">Rendement Moyen Journalier<span class="sort-indicator"></span></th>
             </tr>
         </thead>
         <tbody>
             {% for indicateur in indicateurs %}
-            <tr class="{% if indicateur.rendement_moyen_journalier > 0 %}positive{% else %}negative{% endif %}">
+            <tr>
                 <td>{{ indicateur.nom }}</td>
                 <td>{{ indicateur.prix_moyen_ouverture | round(2) }}</td>
                 <td>{{ indicateur.prix_moyen_fermeture | round(2) }}</td>
@@ -44,7 +45,7 @@
                 <td>{{ indicateur.rendement_moyen_journalier | round(2) }}</td>
             </tr>
             {% endfor %}
-        </tbody>        
+        </tbody>
     </table>
 
     <!-- Affichage du graphique -->

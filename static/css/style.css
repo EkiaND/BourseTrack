@@ -1,23 +1,27 @@
+/* Style général */
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
     padding: 0;
     background-color: #f4f4f4;
+    color: #333;
 }
 
+/* Titres */
 h1, h2 {
     text-align: center;
     color: #333;
 }
 
-/* Centrer l'image */
+/* Centrer les images */
 img {
     display: block;
     margin: 20px auto;
-    max-width: 80%; /* Optionnel : ajuster la taille maximale de l'image */
-    height: auto;   /* Maintenir les proportions */
+    max-width: 80%;
+    height: auto;
 }
 
+/* Style des tableaux */
 table {
     width: 100%;
     margin: 20px auto;
@@ -36,11 +40,12 @@ th {
     color: #fff;
 }
 
+/* Lignes alternées */
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Ajouter des couleurs conditionnelles pour les lignes */
+/* Couleurs conditionnelles pour les lignes */
 tr.positive {
     background-color: #d4edda; /* Vert clair */
 }
@@ -49,7 +54,37 @@ tr.negative {
     background-color: #f8d7da; /* Rouge clair */
 }
 
-/* Styles pour le toggle */
+/* Mode sombre */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+table.dark-mode {
+    background-color: #1e1e1e;
+    border: 1px solid #ffffff;
+}
+
+table.dark-mode th {
+    background-color: #333333;
+    color: #fff;
+}
+
+table.dark-mode td {
+    color: #ffffff; /* Texte blanc dans les cellules */
+}
+
+/* Lignes positives et négatives en mode sombre */
+table.dark-mode tr.positive {
+    background-color: #145214; /* Vert plus foncé */
+    color: #ffffff; /* Texte blanc */
+}
+
+table.dark-mode tr.negative {
+    background-color: #7a1f1f; /* Rouge plus foncé */
+    color: #ffffff; /* Texte blanc */
+}
+/* Bouton toggle pour le mode sombre */
 #dark-mode-toggle {
     position: fixed;
     top: 10px;
@@ -84,7 +119,7 @@ tr.negative {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Mode sombre activé */
+/* Mode sombre activé pour le bouton */
 body.dark-mode .toggle-slider {
     background-color: #333;
 }
@@ -94,26 +129,38 @@ body.dark-mode .toggle-slider .toggle-thumb {
     background-color: #007BFF;
 }
 
-
-/* Styles pour le mode sombre */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+/* Style des colonnes triables */
+th.sortable {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
 }
 
-table.dark-mode {
-    background-color: #1e1e1e;
-    border: 1px solid #ffffff;
+th.sortable:hover {
+    background-color: #0056b3;
 }
 
-table.dark-mode th {
-    background-color: #333333;
+/* Indicateurs de tri */
+th .sort-indicator {
+    margin-left: 10px;
+    font-size: 0.8em;
+    visibility: hidden;
 }
 
-table.dark-mode td {
-    color: #222222;
+th.active .sort-indicator {
+    visibility: visible;
 }
 
+th.active[data-order="asc"] .sort-indicator::after {
+    content: "▲"; /* Flèche ascendante */
+}
+
+th.active[data-order="desc"] .sort-indicator::after {
+    content: "▼"; /* Flèche descendante */
+}
+
+
+/* Boutons généraux */
 button {
     display: block;
     margin: 10px auto;
