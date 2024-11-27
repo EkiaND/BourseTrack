@@ -65,9 +65,6 @@ class InsertionBDD:
             donnees_traites = self.formater_donnees_pour_insertion(donnees, secteur)
             self.gestionnaire_bdd.ajouter_donnees_financieres(donnees_traites, symbole)
 
-
-
-
     def get_fichiers_csv(self, dossier):
         """
         Récupère tous les fichiers CSV dans un dossier donné.
@@ -102,8 +99,6 @@ class InsertionBDD:
                 print(f"Erreur de format pour la ligne {ligne}: {e}")
         return donnees_formatees
 
-
-    
 
 if __name__ == "__main__":
     insertion = InsertionBDD()
