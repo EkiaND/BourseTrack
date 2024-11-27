@@ -3,31 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ titre }}</title>
+    <title>Performance Boursière</title>
+    <link rel="stylesheet" href="../static/css/style.css">
 </head>
 <body>
-    <h1>Bienvenue sur {{ titre }}</h1>
+    <h1>Performances Boursières des Grandes Entreprises</h1>
+
+    <!-- Affichage du tableau -->
     <table border="1">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Secteur</th>
-                <th>Ouverture</th>
-                <th>Clôture</th>
-                <th>Volume</th>
+                <th>Entreprise</th>
+                <th>Prix Moyen Ouverture</th>
+                <th>Prix Moyen Fermeture</th>
+                <th>Volatilité Moyenne</th>
+                <th>Volume Moyen</th>
+                <th>Tendance Globale</th>
+                <th>Rendement Moyen Journalier</th>
             </tr>
         </thead>
         <tbody>
-            {% for donnee in donnees %}
+            {% for indicateur in indicateurs %}
             <tr>
-                <td>{{ donnee.date }}</td>
-                <td>{{ donnee.secteur }}</td>
-                <td>{{ donnee.open }}</td>
-                <td>{{ donnee.close }}</td>
-                <td>{{ donnee.volume }}</td>
+                <td>{{ indicateur.nom }}</td>
+                <td>{{ indicateur.prix_moyen_ouverture | round(2) }}</td>
+                <td>{{ indicateur.prix_moyen_fermeture | round(2) }}</td>
+                <td>{{ indicateur.volatilite_moyenne | round(2) }}</td>
+                <td>{{ indicateur.volume_moyen | round(2) }}</td>
+                <td>{{ indicateur.tendance_globale | round(2) }}</td>
+                <td>{{ indicateur.rendement_moyen_journalier | round(2) }}</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- Affichage du graphique -->
+    <h2>Volume Total des Échanges</h2>
+    <img src="{{ graphique }}" alt="Volume Total">
 </body>
 </html>

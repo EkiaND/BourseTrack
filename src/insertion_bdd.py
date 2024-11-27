@@ -99,7 +99,6 @@ class InsertionBDD:
                 print(f"Erreur de format pour la ligne {ligne}: {e}")
         return donnees_formatees
 
-
 if __name__ == "__main__":
     insertion = InsertionBDD()
     insertion.traiter_et_inserer(dossier="data/financieres")

@@ -2,5 +2,9 @@ requests
 python-dotenv
 sqlalchemy
 flask
+flask-sqlalchemy 
+flask-wtf 
+flask-migrate
 pytest-mock
 pytest
+matplotlib
