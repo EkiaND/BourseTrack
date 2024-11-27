@@ -7,5 +7,27 @@
 </head>
 <body>
     <h1>Bienvenue sur {{ titre }}</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Secteur</th>
+                <th>Ouverture</th>
+                <th>Clôture</th>
+                <th>Volume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donnee in donnees %}
+            <tr>
+                <td>{{ donnee.date }}</td>
+                <td>{{ donnee.secteur }}</td>
+                <td>{{ donnee.open }}</td>
+                <td>{{ donnee.close }}</td>
+                <td>{{ donnee.volume }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

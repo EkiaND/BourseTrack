@@ -1,5 +1,6 @@
 import requests
 import os
+import time
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement depuis le fichier .env
@@ -13,26 +14,52 @@ class GestionnaireAPI:
         self.alpha_vantage_key = os.getenv("ALPHA_VANTAGE_KEY")
         self.news_api_key = os.getenv("NEWS_API_KEY")
 
-    def get_stock_data(self, symbol):
+    def collecter_donnees_entreprises(self, entreprises):
         """
-        Récupère les données financières d'une entreprise via Alpha Vantage.
-        :param symbol: Symbole boursier de l'entreprise (ex : TSLA)
-        :return: Données JSON formatées pour le projet
+        Collecte les données financières et les actualités pour plusieurs entreprises.
+        :param entreprises: Dictionnaire des entreprises à traiter.
+        :return: Dictionnaire contenant les données collectées.
         """
+        donnees_financieres = {}
+        actualites = {}
+
+        for symbole, info in entreprises.items():
+            try:
+                donnees_financieres[symbole] = self.get_stock_data(symbole)
+                actualites[symbole] = self.get_news(info["nom"])
+                print(f"Collecte réussie pour {info['nom']} ({symbole})")
+            except Exception as e:
+                print(f"Erreur pour {info['nom']} ({symbole}): {e}")
+
+        return donnees_financieres, actualites
+
+    def get_stock_data(self, symbol, max_retries=5):
+        retry_count = 0
         url = "https://www.alphavantage.co/query"
         params = {
             "function": "TIME_SERIES_DAILY",
             "symbol": symbol,
             "apikey": self.alpha_vantage_key
         }
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            if "Time Series (Daily)" not in data:
-                raise Exception("Erreur : données introuvables.")
-            return self._formater_donnees_financieres(data["Time Series (Daily)"])
-        else:
-            raise Exception(f"Erreur API Alpha Vantage : {response.status_code}")
+        while retry_count < max_retries:
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                if "Time Series (Daily)" in data:
+                    return self._formater_donnees_financieres(data["Time Series (Daily)"])
+                elif "Note" in data:
+                    print(f"Rate limit atteint pour {symbol}. Attente...")
+                    time.sleep(60)
+                    retry_count += 1
+                else:
+                    raise Exception(f"Erreur : données introuvables pour {symbol}.")
+            elif response.status_code == 429:
+                print(f"Rate limit HTTP 429 pour {symbol}. Réessai...")
+                time.sleep(60)
+                retry_count += 1
+            else:
+                raise Exception(f"Erreur API Alpha Vantage ({response.status_code}) pour {symbol}")
+        raise Exception(f"Échec après {max_retries} tentatives pour {symbol}")
 
     def _formater_donnees_financieres(self, donnees_brutes):
         """
@@ -65,12 +92,17 @@ class GestionnaireAPI:
             "language": "en",
             "apiKey": self.news_api_key
         }
-        response = requests.get(url, params=params)
-        if response.status_code == 200:
-            data = response.json()
-            return self._formater_actualites(data["articles"])
-        else:
-            raise Exception(f"Erreur API News API : {response.status_code}")
+
+        while True:  # Boucle pour réessayer en cas de dépassement de quota
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                return self._formater_actualites(data["articles"])
+            elif response.status_code == 429:  # Code HTTP pour trop de requêtes
+                print("Rate limit atteint (HTTP 429). Attente en cours...")
+                time.sleep(60)  # Attendre 1 minute avant de réessayer
+            else:
+                raise Exception(f"Erreur API News API : {response.status_code}")
 
     def _formater_actualites(self, articles_bruts):
         """
