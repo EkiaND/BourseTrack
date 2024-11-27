@@ -48,3 +48,81 @@ tr.positive {
 tr.negative {
     background-color: #f8d7da; /* Rouge clair */
 }
+
+/* Styles pour le toggle */
+#dark-mode-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.toggle-label {
+    font-size: 18px;
+}
+
+.toggle-slider {
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: #ddd;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-slider .toggle-thumb {
+    width: 23px;
+    height: 23px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Mode sombre activé */
+body.dark-mode .toggle-slider {
+    background-color: #333;
+}
+
+body.dark-mode .toggle-slider .toggle-thumb {
+    transform: translateX(25px);
+    background-color: #007BFF;
+}
+
+
+/* Styles pour le mode sombre */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+table.dark-mode {
+    background-color: #1e1e1e;
+    border: 1px solid #ffffff;
+}
+
+table.dark-mode th {
+    background-color: #333333;
+}
+
+table.dark-mode td {
+    color: #222222;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #007BFF;
+    color: #ffffff;
+}

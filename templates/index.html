@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Boursière</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <script src="../static/js/toggle-dark-mode.js" defer></script>
 </head>
 <body>
     <h1>Performances Boursières des Grandes Entreprises</h1>
+
+    <!-- Barre de bascule pour le mode sombre -->
+    <div id="dark-mode-toggle" class="toggle">
+        <span class="toggle-label">🌞</span>
+        <div class="toggle-slider">
+            <span class="toggle-thumb"></span>
+        </div>
+        <span class="toggle-label">🌙</span>
+    </div>
 
     <!-- Affichage du tableau -->
     <table border="1">
