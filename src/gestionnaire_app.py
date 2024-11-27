@@ -28,17 +28,20 @@ def afficher_volume_total():
         noms = [vol[0] for vol in volumes]
         valeurs = [vol[1] for vol in volumes]
 
-        # Génération du graphique avec matplotlib
+        # Génération du graphique
         plt.figure(figsize=(8, 8))
         plt.pie(valeurs, labels=noms, autopct='%1.1f%%', startangle=140)
         plt.title("Volume Total des Échanges par Entreprise")
 
-        # Enregistrer le graphique dans le dossier static/images
-        graphique_path = os.path.join(STATIC_DIR, "images", "volume_total.jpg")
-        os.makedirs(os.path.dirname(graphique_path), exist_ok=True)  # Créer le dossier s'il n'existe pas
+        # Enregistrement du fichier dans le dossier static/images
+        graphique_filename = "images/volume_total.jpg"
+        graphique_path = os.path.join(app.static_folder, graphique_filename)
+        os.makedirs(os.path.dirname(graphique_path), exist_ok=True)  # Crée le dossier si nécessaire
         plt.savefig(graphique_path)
         plt.close()
-        return graphique_path
+
+        # Retourne le chemin relatif pour Flask
+        return graphique_filename
     return None
 
 
@@ -48,14 +51,15 @@ def index():
     Route principale pour afficher les indicateurs financiers et le graphique.
     """
     indicateurs = bdd.calculer_indicateurs_financiers()
-    graphique_path = afficher_volume_total()
+    graphique_path = afficher_volume_total()  # Chemin relatif à static
 
     return render_template(
         "index.html",
         titre="Performances Boursières",
         indicateurs=indicateurs,
-        graphique=graphique_path
+        graphique=graphique_path  # Passe le chemin relatif au template
     )
+
 
 
 if __name__ == "__main__":
