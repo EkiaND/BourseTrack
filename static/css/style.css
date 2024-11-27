@@ -56,7 +56,12 @@ tr.negative {
 
 /* Mode sombre */
 body.dark-mode {
-    background-color: #121212;
+    background-color: #131313;
+    color: #ffffff;
+}
+
+h1.dark-mode, h2.dark-mode {
+    text-align: center;
     color: #ffffff;
 }
 
