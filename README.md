@@ -73,8 +73,84 @@ python src/gestionnaire_app.py
 # Structure du projet 
 
 ```bash
-COURTENEY LA PLUS BELLE
-Courteney elle a pas fait le git pull
+BourseTrack
+│   .env
+│   .gitignore
+│   bourse.db
+│   bourse_track.log
+│   howtogit.md
+│   README.md
+│   requirements.txt
+│
+├───data
+│   ├───actualites
+│   │       AAPL.csv
+│   │       AMZN.csv
+│   │       BABA.csv
+│   │       F.csv
+│   │       MSFT.csv
+│   │       TM.csv
+│   │       TSLA.csv
+│   │
+│   └───financieres
+│           AAPL.csv
+│           AMZN.csv
+│           BABA.csv
+│           F.csv
+│           MSFT.csv
+│           TM.csv
+│           TSLA.csv
+│
+├───src
+│   │   collecte_donnees.py
+│   │   gestionnaire_api.py
+│   │   gestionnaire_app.py
+│   │   gestionnaire_bdd.py
+│   │   gestionnaire_fichier.py
+│   │   gestionnaire_logs.py
+│   │   insertion_bdd.py
+│   │   __init__.py
+│   │
+│   └───__pycache__
+│           gestionnaire_api.cpython-311.pyc
+│           gestionnaire_api.cpython-313.pyc
+│           gestionnaire_app.cpython-313.pyc
+│           gestionnaire_bdd.cpython-311.pyc
+│           gestionnaire_bdd.cpython-312.pyc
+│           gestionnaire_bdd.cpython-313.pyc
+│           gestionnaire_fichier.cpython-313.pyc
+│           gestionnaire_logs.cpython-313.pyc
+│           insertion_bdd.cpython-313.pyc
+│
+├───static
+│   ├───css
+│   │       style.css
+│   │
+│   ├───images
+│   │       volume_total.jpg
+│   │
+│   └───js
+│           sorting.js
+│           toggle-dark-mode.js
+│
+├───templates
+│       index.html
+│
+└───test
+    │   test_gestionnaire_api.py
+    │   test_gestionnaire_app.py
+    │   test_gestionnaire_bdd.py
+    │   test_gestionnaire_fichier.py
+    │   test_insertion_bdd.py
+    │   __init__.py
+    │
+    └───__pycache__
+            test_gestionnaire_api.cpython-313-pytest-8.3.3.pyc
+            test_gestionnaire_app.cpython-313-pytest-8.3.3.pyc
+            test_gestionnaire_bdd.cpython-313-pytest-8.3.3.pyc
+            test_gestionnaire_fichier.cpython-313-pytest-8.3.3.pyc
+            test_insertion_bdd.cpython-313-pytest-8.3.3.pyc
+            __init__.cpython-313.pyc
 ```
 
 ---
