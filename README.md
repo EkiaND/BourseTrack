@@ -73,7 +73,7 @@ python src/gestionnaire_app.py
 # Structure du projet 
 
 ```bash
-TEST
+COURTENEY LA PLUS BELLE
 ```
 
 ---
