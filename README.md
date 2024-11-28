@@ -74,6 +74,7 @@ python src/gestionnaire_app.py
 
 ```bash
 COURTENEY LA PLUS BELLE
+Courteney elle a pas fait le git pull
 ```
 
 ---
@@ -82,7 +83,7 @@ COURTENEY LA PLUS BELLE
 
 ## Lesueur Romain
 
-- 
+-
 -
 -
 
