@@ -73,7 +73,7 @@ python src/gestionnaire_app.py
 # Structure du projet 
 
 ```bash
-TEST
+Courteney elle a pas fait le git pull
 ```
 
 ---
@@ -82,7 +82,7 @@ TEST
 
 ## Lesueur Romain
 
-- 
+-
 -
 -
 
