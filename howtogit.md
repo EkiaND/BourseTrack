@@ -4,7 +4,7 @@ Ce guide explique comment effectuer des modifications dans le dépôt, les commi
 
 ---
 
-## 1. Cloner le Dépôt TEST
+## 1. Cloner le Dépôt
 
 Si ce n'est pas encore fait, commencez par cloner le dépôt sur votre machine locale :
 
