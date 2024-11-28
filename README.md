@@ -73,21 +73,7 @@ python src/gestionnaire_app.py
 # Structure du projet 
 
 ```bash
-
-BourseTrack/
-├── src/                  # Scripts Python
-│   ├── gestionnaire_api.py
-│   ├── gestionnaire_fichier.py
-│   ├── gestionnaire_bdd.py
-│   └── gestionnaire_app.py
-├── templates/            # Modèles HTML
-│   └── index.html
-├── static/               # Fichiers CSS et images
-│   └── style.css
-├── data/                 # Données CSV sauvegardées
-├── README.md             # Documentation du projet
-├── requirements.txt      # Liste des dépendances
-└── .env                  # Clés d'API (non inclus dans le dépôt GitHub)
+TEST
 ```
 
 ---
