@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Performance Boursière</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <script src="../static/js/toggle-dark-mode.js" defer></script>
-    <script src="../static/js/sorting.js" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/toggle-dark-mode.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/sorting.js') }}" defer></script>
+
 </head>
-<body>
+<body class="{{ 'dark-mode' if session.get('dark_mode') else '' }}">
     <h1>Performances Boursières des Grandes Entreprises</h1>
 
     <!-- Barre de bascule pour le mode sombre -->
@@ -48,8 +49,55 @@
         </tbody>
     </table>
 
-    <!-- Affichage du graphique -->
-    <h2>Volume Total des Échanges</h2>
-    <img src="{{ url_for('static', filename=graphique) }}" alt="Volume Total">
+    <!-- Conteneur pour le graphique et les actualités -->
+    <div class="container">
+        <!-- Affichage du graphique -->
+        <div class="graphic-container">
+            {% if graphique %}
+                <img src="{{ url_for('static', filename=graphique['light']) }}" alt="Volume Total" class="light-mode-image">
+                <img src="{{ url_for('static', filename=graphique['dark']) }}" alt="Volume Total" class="dark-mode-image">
+            {% else %}
+                <p>Le graphique n'a pas pu être généré.</p>
+            {% endif %}
+        </div>
+
+        <!-- Affichage des actualités -->
+        <div class="news-table-container">
+            <h2>Actualités Financières</h2>
+            <table border="1" class="news-table">
+                <thead>
+                    <tr>
+                        <th>Entreprise</th>
+                        <th>Date de l'article</th>
+                        <th>Actualités</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entreprise in entreprises %}
+                        {% if entreprise.nom in actualites %}
+                            {% for actualite in actualites[entreprise.nom] %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ actualite.URL }}" target="_blank">{{ entreprise.nom }}</a>
+                                    </td>
+                                    <td>
+                                        <p><strong>{{ actualite.PublishedAt }}</strong></p>
+                                    </td>
+                                    <td>
+                                        <p>{{ actualite.Description }}</p>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="3">Aucune actualité disponible pour {{ entreprise.nom }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </body>
 </html>

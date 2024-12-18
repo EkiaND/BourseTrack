@@ -117,6 +117,7 @@ class GestionnaireBDD:
                 rendements = [(d.close - d.open) / d.open * 100 for d in donnees]
 
                 indicateurs.append({
+                    "symbole": entreprise.symbole,
                     "nom": entreprise.nom,
                     "prix_moyen_ouverture": sum(prix_ouverture) / len(prix_ouverture),
                     "prix_moyen_fermeture": sum(prix_fermeture) / len(prix_fermeture),
