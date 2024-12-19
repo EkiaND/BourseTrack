@@ -1,14 +1,17 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById("dark-mode-toggle");
     const body = document.body;
-    const table = document.querySelector("table");
-    const h1 = document.querySelector("h1");
-    const h2 = document.querySelector("h2");
 
-    toggle.addEventListener("click", function () {
+    // Vérifie et applique le mode sombre depuis localStorage
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
+    if (isDarkMode) {
+        body.classList.add("dark-mode");
+    }
+
+    // Gère le basculement du mode sombre
+    toggle.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
-        h1.classList.toggle("dark-mode");
-        h2.classList.toggle("dark-mode");
-        table.classList.toggle("dark-mode");
+        const isDarkMode = body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
     });
 });

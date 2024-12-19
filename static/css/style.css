@@ -7,18 +7,26 @@ body {
     color: #333;
 }
 
-/* Titres */
 h1, h2 {
     text-align: center;
     color: #333;
 }
 
-/* Centrer les images */
 img {
-    display: block;
-    margin: 20px auto;
-    max-width: 80%;
-    height: auto;
+    width: 90%;   
+    max-width: 1000px; 
+    height: auto;  
+    margin: 0 auto; 
+    display: block; 
+}
+
+/* Paragraphes */
+p {
+    margin: 10px 0;
+}
+
+body.dark-mode p {
+    color: #cccccc;
 }
 
 /* Style des tableaux */
@@ -47,11 +55,11 @@ tr:nth-child(even) {
 
 /* Couleurs conditionnelles pour les lignes */
 tr.positive {
-    background-color: #d4edda; /* Vert clair */
+    background-color: #b0e2bb; /* Vert clair */
 }
 
 tr.negative {
-    background-color: #f8d7da; /* Rouge clair */
+    background-color: #f5b3b8; /* Rouge clair */
 }
 
 /* Mode sombre */
@@ -60,35 +68,99 @@ body.dark-mode {
     color: #ffffff;
 }
 
-h1.dark-mode, h2.dark-mode {
-    text-align: center;
+body.dark-mode h1, body.dark-mode h2 {
     color: #ffffff;
 }
 
-table.dark-mode {
+body.dark-mode table {
     background-color: #1e1e1e;
-    border: 1px solid #ffffff;
+    border: 1px solid #555;
 }
 
-table.dark-mode th {
+body.dark-mode th {
     background-color: #333333;
     color: #fff;
 }
 
-table.dark-mode td {
-    color: #ffffff; /* Texte blanc dans les cellules */
+body.dark-mode td {
+    color: #ffffff;
 }
 
 /* Lignes positives et négatives en mode sombre */
-table.dark-mode tr.positive {
+body.dark-mode tr.positive {
     background-color: #145214; /* Vert plus foncé */
-    color: #ffffff; /* Texte blanc */
+    color: #ffffff;
 }
 
-table.dark-mode tr.negative {
+body.dark-mode tr.negative {
     background-color: #7a1f1f; /* Rouge plus foncé */
-    color: #ffffff; /* Texte blanc */
+    color: #ffffff;
 }
+
+/* Lignes paires plus foncées uniquement pour la table des actualités en mode sombre */
+body.dark-mode .news-table tbody tr:nth-child(even) {
+    background-color: #333; /* Couleur plus foncée pour les lignes paires */
+}
+
+/* Style pour les liens */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+body.dark-mode a {
+    color: #4dabff;
+}
+
+/* Conteneurs pour le graphique et le tableau des actualités */
+.container {
+    display: flex;
+    justify-content: space-between; /* Espacement égal entre les deux sections */
+    align-items: flex-start;
+    gap: 20px; /* Espace entre le graphique et le tableau */
+}
+
+.graphic-container, .news-table-container {
+    flex: 1;  /* Chaque section prend 50% de la largeur disponible */
+    box-sizing: border-box;
+}
+
+/* Adaptation en mode sombre pour les sections */
+body.dark-mode .graphic-container,
+body.dark-mode .news-table-container {
+    background-color: #131313;
+}
+
+/* Style des colonnes triables */
+th.sortable {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+}
+
+th.sortable:hover {
+    background-color: #0056b3;
+}
+
+/* Indicateurs de tri */
+th .sort-indicator {
+    margin-left: 10px;
+    font-size: 0.8em;
+    visibility: hidden;
+}
+
+th.active .sort-indicator {
+    visibility: visible;
+}
+
+th.active[data-order="asc"] .sort-indicator::after {
+    content: "▲"; /* Flèche ascendante */
+}
+
+th.active[data-order="desc"] .sort-indicator::after {
+    content: "▼"; /* Flèche descendante */
+}
+
 /* Bouton toggle pour le mode sombre */
 #dark-mode-toggle {
     position: fixed;
@@ -124,7 +196,11 @@ table.dark-mode tr.negative {
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-/* Mode sombre activé pour le bouton */
+/* Transition pour l'ensemble du body et les éléments concernés */
+body, h1, h2, table, th, td, p, tr, a, .toggle-slider {
+    transition: all 0.3s ease-in-out; /* Ajout de la transition pour toutes les propriétés */
+}
+
 body.dark-mode .toggle-slider {
     background-color: #333;
 }
@@ -134,47 +210,19 @@ body.dark-mode .toggle-slider .toggle-thumb {
     background-color: #007BFF;
 }
 
-/* Style des colonnes triables */
-th.sortable {
-    cursor: pointer;
-    background-color: #007BFF;
-    color: white;
-}
-
-th.sortable:hover {
-    background-color: #0056b3;
-}
-
-/* Indicateurs de tri */
-th .sort-indicator {
-    margin-left: 10px;
-    font-size: 0.8em;
-    visibility: hidden;
-}
-
-th.active .sort-indicator {
-    visibility: visible;
-}
-
-th.active[data-order="asc"] .sort-indicator::after {
-    content: "▲"; /* Flèche ascendante */
-}
-
-th.active[data-order="desc"] .sort-indicator::after {
-    content: "▼"; /* Flèche descendante */
-}
-
-
-/* Boutons généraux */
-button {
+/* Affichage conditionnel pour les images en mode clair et sombre */
+.light-mode-image {
     display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #007BFF;
-    color: #ffffff;
+.dark-mode-image {
+    display: none;
+}
+
+body.dark-mode .light-mode-image {
+    display: none;
+}
+
+body.dark-mode .dark-mode-image {
+    display: block;
 }
