@@ -74,10 +74,8 @@ python src/gestionnaire_app.py
 
 ```bash
 BourseTrack
-│   .env
 │   .gitignore
 │   bourse.db
-│   bourse_track.log
 │   howtogit.md
 │   README.md
 │   requirements.txt
@@ -110,47 +108,22 @@ BourseTrack
 │   │   gestionnaire_logs.py
 │   │   insertion_bdd.py
 │   │   __init__.py
-│   │
-│   └───__pycache__
-│           gestionnaire_api.cpython-311.pyc
-│           gestionnaire_api.cpython-313.pyc
-│           gestionnaire_app.cpython-313.pyc
-│           gestionnaire_bdd.cpython-311.pyc
-│           gestionnaire_bdd.cpython-312.pyc
-│           gestionnaire_bdd.cpython-313.pyc
-│           gestionnaire_fichier.cpython-313.pyc
-│           gestionnaire_logs.cpython-313.pyc
-│           insertion_bdd.cpython-313.pyc
 │
 ├───static
 │   ├───css
 │   │       style.css
 │   │
 │   ├───images
-│   │       volume_total.jpg
-│   │
+│   │       volume_total_dark.jpg
+│   │       volume_total_light.jpg
 │   └───js
 │           sorting.js
 │           toggle-dark-mode.js
 │
 ├───templates
 │       index.html
-│
-└───test
-    │   test_gestionnaire_api.py
-    │   test_gestionnaire_app.py
-    │   test_gestionnaire_bdd.py
-    │   test_gestionnaire_fichier.py
-    │   test_insertion_bdd.py
-    │   __init__.py
-    │
-    └───__pycache__
-            test_gestionnaire_api.cpython-313-pytest-8.3.3.pyc
-            test_gestionnaire_app.cpython-313-pytest-8.3.3.pyc
-            test_gestionnaire_bdd.cpython-313-pytest-8.3.3.pyc
-            test_gestionnaire_fichier.cpython-313-pytest-8.3.3.pyc
-            test_insertion_bdd.cpython-313-pytest-8.3.3.pyc
-            __init__.cpython-313.pyc
+
+
 ```
 
 ---
@@ -159,22 +132,27 @@ BourseTrack
 
 ## Lesueur Romain
 
--
--
--
+Partie Collecte des Données (APIs et CSV)
+
+- Développement complet des scripts pour collecter les données financières via les APIs suivantes :
+  - [Alpha Vantage](https://www.alphavantage.co/) : Données financières.
+  - [News API](https://newsapi.org/) : Actualités du marché.
+
+- Mise en place de la logique de stockage des données en fichiers CSV.
+- Gestion des formats et organisation des fichiers pour garantir une compatibilité avec les autres parties du projet.
 
 ## Sidy Diop
 
--
--
--
+Base de Données (SQLite avec SQLAlchemy)
+
+- Conception et mise en place de la base de données SQLite pour le stockage structuré des données.
+- Intégration de SQLAlchemy pour faciliter les interactions entre les scripts et la base de données.
+- Écriture des requêtes permettant d’extraire les indicateurs financiers utilisés dans l’application web.
 
 ## Saint-Hubert Courteney
 
--
--
--
+Application Web (Flask et Jinja2)
 
-
----
-Ce **README.md** est structuré pour fournir toutes les informations essentielles aux utilisateurs et développeurs. Si des ajustements ou des sections supplémentaires sont nécessaires, dites-le-moi !
+- Développement complet du site web basé sur Flask, y compris la gestion des routes et des templates.
+- Création des interfaces utilisateur en utilisant Jinja2 pour afficher les données financières et les graphiques.
+- Intégration des visualisations générées par Matplotlib et gestion des actualités associées aux entreprises.
