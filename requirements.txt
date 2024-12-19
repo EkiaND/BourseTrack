@@ -1,10 +1,16 @@
-requests
-python-dotenv
-sqlalchemy
-flask
-flask-sqlalchemy 
-flask-wtf 
-flask-migrate
-pytest-mock
-pytest
-matplotlib
+# Gestion des variables d'environnement
+python-dotenv   # Charger les variables d'environnement depuis un fichier .env
+
+# Communication avec les APIs externes
+requests        # Effectuer des requêtes HTTP pour récupérer des données depuis des APIs
+
+# Gestion de la base de données
+sqlalchemy      # ORM pour interagir avec la base de données SQLite ou autre
+flask-sqlalchemy  # Intégration de SQLAlchemy avec Flask pour simplifier les opérations sur la base de données
+flask-migrate   # Gestion des migrations de schéma de la base de données avec SQLAlchemy et Flask
+
+# Développement de l'application web
+flask           # Framework web léger pour développer l'application
+
+# Visualisation et génération de graphiques
+matplotlib      # Créer des graphiques pour représenter les données financières
